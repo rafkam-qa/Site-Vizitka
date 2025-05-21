@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Камалов Рафаэль</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" href="d2.jpg" type="image/jpg" />
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <div class="container fade-in">
+    <h1>Камалов Рафаэль</h1>
+    <div class="subtitle">QA Engineer</div>
+    <img src="121212.jpg" alt="Фото Рафаэля" class="profile-photo" />
+
+    <div class="contacts">
+      <h2>Контакты</h2>
+      <ul>
+        <li><i class="fab fa-telegram"></i> <a href="@mysticraf">@mysticraf</a></li>
+        <li><i class="fab fa-vk"></i> <a href="https://vk.com/rafkamm">https://vk.com/rafkamm</a></li>
+        <li><i class="fas fa-envelope"></i> <a href="mailto:rafael.kamalove@mail.ru">rafael.kamalove@mail.ru</a></li>
+      </ul>
+      <button id="contactBtn">Связаться</button>
+    </div>
+
+    <!-- Секция с инструментами -->
+    <section class="tools-section">
+      <h2>Мои инструменты</h2>
+      <div class="tools-container">
+        <div class="tool-item fade-scroll">
+          <img src="tools/postman.svg" alt="Postman" />
+          <p>Postman</p>
+        </div>
+        <div class="tool-item fade-scroll">
+          <img src="tools/charles.svg" alt="Charles Proxy" />
+          <p>Charles Proxy</p>
+        </div>
+        <div class="tool-item fade-scroll">
+          <img src="tools/metabase.svg" alt="Metabase" />
+          <p>Metabase</p>
+        </div>
+        <div class="tool-item fade-scroll">
+          <img src="tools/chatgpt.svg" alt="ChatGPT" />
+          <p>ChatGPT</p>
+        </div>
+        <div class="tool-item fade-scroll">
+          <img src="tools/mongodb.svg" alt="MongoDB" />
+          <p>MongoDB</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2025 Камалов Рафаэль
+    </footer>
+  </div>
+
+  <!-- Модальное окно -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span id="closeModal">&times;</span>
+      <p>Там выше все ссылки, какая связь 😄</p>
+    </div>
+  </div>
+
+  <script src="stars.js"></script>
+
+  <script>
+    // Модальное окно
+    document.getElementById('contactBtn').onclick = () => {
+      document.getElementById('modal').style.display = 'flex';
+    };
+    document.getElementById('closeModal').onclick = () => {
+      document.getElementById('modal').style.display = 'none';
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const fadeElements = document.querySelectorAll('.fade-scroll');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      fadeElements.forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
